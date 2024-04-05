@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+    <div>
+        <h2>Flight Details</h2>
+    </div>
+    <div>
+        <strong>Airline:</strong> <%= flight.airline %>
+    </div>
+    <div>
+        <strong>Airport:</strong> <%= flight.airport %>
+    </div>
+    <div>
+        <strong>Flight No:</strong> <%= flight.flightNo %>
+    </div>
+    <div>
+        <strong>Departs:</strong> <%= flight.departs %>
+    </div>
+
+    <!-- Destinations list -->
+    <br><br>
+    <h2>Destinations</h2>
+    <form id="add-destination" method="POST" action="/flights/<%= flight._id %>/destinations">
+        <label for="airport">Select Airport:</label>
+        <select name="airport" id="destination">
+            <option value="AUS">Austin, TX (AUS)</option>
+            <option value="DFW">Dallas/Fort Worth, TX (DFW)</option>
+            <option value="SEA">Seattle, WA (SEA)</option>
+            <option value="DEN">Denver, CO (DEN)</option>
+            <option value="LAX">Los Angeles, CA (LAX)</option>
+            <option value="SFO">San Francisco, CA (SFO)</option>
+            <option value="SAN">San Diego, CA (SAN)</option>
+            <option value="IAD">Washington, D.C. (IAD)</option>
+            <option value="DBX">Dubai, UAE (DBX)</option>
+            <option value="AMS">Amsterdam, Netherlands (AMS)</option>
+            <option value="HEL">Helsinki, Finland (HEL)</option>
+            <option value="IST">Istanbul, Turkey (IST)</option>
+        </select><br>
+        <label for="arrival">Select Arrival Date:</label>
+        <input name="arrival" type="datetime-local" required="true"><br><br>
+        <input id="destination-button" type="submit" value="Add Destination"><br><br>
+    </form>
+
+    <% flight.destinations.forEach(function(d) { %>
+    <p><strong>Airport:</strong> <%= d.airport %></p>
+    <p><strong>Arrival:</strong> <%= d.arrival %></p>
+    <% }); %>
+
+    <!-- Add Ticket Button -->
+    <a href="/flights/<%= flight._id %>/tickets/new" class="btn btn-primary">Add New Ticket</a>
+    
+    <% flight.tickets.forEach(function(t) { %>
+    <p><strong>Seat:</strong> <%= t.seat %></p>
+    <p><strong>Price:</strong> <%= t.price %></p>
+    <% }); %>
+</section>
+
+<%- include('../partials/footer') %>

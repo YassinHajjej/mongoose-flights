@@ -1,0 +1,25 @@
+<%
+  // Define the title variable
+  let title = "Add New Ticket";
+%>
+<%- include('../partials/header', { title: title }) %>
+
+<div class="ticket-form-container">
+  <h2>Seat </h2>
+  <form id="ticketForm" action="/flights/<%= flight._id %>/tickets/new" method="POST">
+    <div class="form-group">
+      <label for="seat">Seat No:</label>
+      <input name="seat" required pattern="[A-F][1-9]\d?" placeholder="Enter seat number">
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input name="price" type="number" placeholder="Enter price">
+    </div>
+
+    <button type="submit">Create Ticket</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
+

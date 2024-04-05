@@ -1,0 +1,53 @@
+<%
+  // Define the title variable
+  let title = "Create a New Flight";
+%>
+<%- include('../partials/header', { title: title }) %>
+
+<h2>Create a New Flight</h2>
+
+<form id="flightForm" action="/flights" method="POST">
+    <label for="airline">Airline:</label>
+    <select id="airline" name="airline" required>
+        <option value="American">American</option>
+        <option value="Southwest">Southwest</option>
+        <option value="United">United</option>
+        <option value="Delta">Delta</option>
+        <option value="Alaska">Alaska</option>
+        <option value="Spirit">Spirit</option>
+        <option value="Virgin">Virgin</option>
+        <option value="Emirates">Emirates</option>
+        <option value="Qatar">Qatar</option>
+        <option value="Ethiad">Ethiad</option>
+    </select><br>
+
+    <label for="airport">Airport:</label>
+    <select id="airport" name="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="SEA">SEA</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SFO">SFO</option>
+        <option value="SAN">SAN</option>
+        <option value="IAD">IAD</option>
+        <option value="DBX">DBX</option>
+        <option value="AMS">AMS</option>
+        <option value="HEL">HEL</option>
+        <option value="IST">IST</option>
+    </select><br>
+
+    <label for="flightNo">Flight Number:</label>
+    <input type="number" name="flightNo"><br>
+
+    <label for="departs">Departure Date:</label>
+    <input name="departs" type="datetime-local"><br>
+
+    <button type="submit">Create Flight</button>
+</form>
+
+<p>
+    <%= errorMsg %>
+</p>
+
+<%- include('../partials/footer') %>
